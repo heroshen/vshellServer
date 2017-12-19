@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Created by heroshen on 2017/12/13.
  */
-@Order(1)
+@Order(2)
 @WebFilter(filterName = "radioFilter", urlPatterns = "/radio/*")
 public class RadioFilter implements Filter {
     @Override
