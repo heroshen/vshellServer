@@ -1,0 +1,3 @@
+      <if test="${javaProperty} != null" >
+        and ${dbColumn} like CONCAT('%', #{${javaProperty},jdbcType=VARCHAR}, '%')
+      </if>

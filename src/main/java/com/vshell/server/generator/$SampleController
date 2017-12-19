@@ -1,0 +1,59 @@
+package com.vshell.server.controller;
+
+import com.vshell.server.dao.${Service}Mapper;
+import com.vshell.server.model.${Service};
+import com.vshell.server.utils.MapUtil;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/${lowerService}")
+public class ${Service}Controller {
+
+    @Autowired
+    private ${Service}Mapper ${lowerService}Mapper;
+
+    @RequestMapping("/queryById")
+    public ${Service} queryById(Integer id) {
+        ${Service} result = null;
+        if (id != null && id > 0) {
+            result = ${lowerService}Mapper.selectByPrimaryKey(id);
+        }
+        return result;
+    }
+
+    @RequestMapping("/insert")
+    public int insert(${Service} record) {
+        int result = 0;
+        if (record != null) {
+            result = ${lowerService}Mapper.insertSelective(record);
+        }
+        return result;
+    }
+
+    @RequestMapping("/delete")
+    public int delete(Integer id) {
+        int result = 0;
+        if (id != null) {
+            result = ${lowerService}Mapper.deleteByPrimaryKey(id);
+        }
+        return result;
+    }
+
+    @RequestMapping("/update")
+    public int update(${Service} record) {
+        int result = 0;
+        if (record != null) {
+            result = ${lowerService}Mapper.updateByPrimaryKeySelective(record);
+        }
+        return result;
+    }
+
+    @RequestMapping("/selectByConditions")
+    public List<${Service}> selectByConditions(${Service} record, Integer offset, Integer pageSize){
+        List<${Service}> resultList = ${lowerService}Mapper.selectByConditions(MapUtil.bean2Map(record, offset, pageSize));
+        return resultList;
+    }
+}

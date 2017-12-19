@@ -1,0 +1,11 @@
+  <select id="selectByConditions" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from ${javaName}
+    where delete_sign = 0
+    ${conditions}
+    order by id desc
+    <if test="pageSize != null" >
+      limit #{offset, jdbcType=INTEGER}, #{pageSize, jdbcType=INTEGER}
+    </if>
+  </select>

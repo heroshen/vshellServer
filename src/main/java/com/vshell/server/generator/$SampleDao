@@ -1,0 +1,1 @@
+    List<${service}> selectByConditions(Map record);
