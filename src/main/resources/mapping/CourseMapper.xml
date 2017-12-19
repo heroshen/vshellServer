@@ -175,35 +175,35 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="selectByConditions" resultMap="BaseResultMap" parameterType="com.vshell.server.model.Course" >
+  <select id="selectByConditions" resultMap="BaseResultMap" >
     select
     <include refid="Base_Column_List" />
     from Course
     where delete_sign = 0
-    <if test="type != null" >
-      and type = #{type,jdbcType=INTEGER}
-    </if>
-    <if test="gradeId != null" >
-      and grade_id = #{gradeId,jdbcType=INTEGER}
-    </if>
-    <if test="subjectId != null" >
-      and subject_id = #{subjectId,jdbcType=INTEGER}
-    </if>
-    <if test="title != null" >
-      and title like CONCAT('%', #{title,jdbcType=VARCHAR}, '%')
-    </if>
-    <if test="catalog != null" >
-      and catalog like CONCAT('%', #{catalog,jdbcType=VARCHAR}, '%')
-    </if>
-    <if test="detail != null" >
-      and detail like CONCAT('%', #{detail,jdbcType=VARCHAR}, '%')
-    </if>
-    <if test="price != null" >
-      and price = #{price,jdbcType=INTEGER}
-    </if>
-    <if test="resourceUrl != null" >
-      and resource_url like CONCAT('%', #{resourceUrl,jdbcType=VARCHAR}, '%')
-    </if>
+          <if test="type != null" >
+        and type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="gradeId != null" >
+        and grade_id = #{gradeId,jdbcType=INTEGER}
+      </if>
+      <if test="subjectId != null" >
+        and subject_id = #{subjectId,jdbcType=INTEGER}
+      </if>
+      <if test="title != null" >
+        and title like CONCAT('%', #{title,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="catalog != null" >
+        and catalog like CONCAT('%', #{catalog,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="detail != null" >
+        and detail like CONCAT('%', #{detail,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="price != null" >
+        and price = #{price,jdbcType=INTEGER}
+      </if>
+      <if test="resourceUrl != null" >
+        and resource_url like CONCAT('%', #{resourceUrl,jdbcType=VARCHAR}, '%')
+      </if>
 
     order by id desc
     <if test="pageSize != null" >

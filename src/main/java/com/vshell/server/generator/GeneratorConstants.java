@@ -7,7 +7,7 @@ import java.util.List;
  * Created by heroshen on 2017/12/7.
  */
 public class GeneratorConstants {
-    public static final String serverPath = "/Users/heroshen/WorkspacesSelf/vshellServer/";
+    public static final String serverPath = "/Users/heroshen/Workspaces/vshellServer/";
     public static final String javaPath = serverPath + "src/main/java/com/vshell/server/";
     public static final String controllerPath = javaPath + "controller/";
     public static final String daoPath = javaPath + "dao/";
