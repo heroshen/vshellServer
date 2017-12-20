@@ -31,8 +31,8 @@ public class AuthFilter implements Filter {
         treeMap.remove("secret");
         String paramString = JSONObject.toJSONString(treeMap);
         String secret = servletRequest.getParameter("secret");
-        if((secret!=null)&&(secret.equals(MD5Util.getMD5(paramString+token)))){
-            filterChain.doFilter(servletRequest,servletResponse);
+        if ((secret != null) && (secret.equals(MD5Util.getMD5(paramString + token)))) {
+            filterChain.doFilter(servletRequest, servletResponse);
         } else {
             return;
         }
