@@ -20,40 +20,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table Admin
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `Admin`;
-
-CREATE TABLE `Admin` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `login_name` varchar(64) NOT NULL DEFAULT '',
-  `password` varchar(128) NOT NULL DEFAULT '',
-  `add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `delete_sign` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
-# Dump of table AdminLog
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `AdminLog`;
-
-CREATE TABLE `AdminLog` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `login_id` int(11) NOT NULL DEFAULT '0',
-  `operate_type` int(11) NOT NULL DEFAULT '0' COMMENT '操作类型',
-  `add_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `delete_sign` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
 # Dump of table Comment
 # ------------------------------------------------------------
 
