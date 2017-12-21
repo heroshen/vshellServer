@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vshell.server.dao.AuthOperationMapper" >
+  <resultMap id="BaseResultMap" type="com.vshell.server.model.AuthOperation" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="op_code" property="opCode" jdbcType="VARCHAR" />
+    <result column="op_name" property="opName" jdbcType="VARCHAR" />
+    <result column="op_href" property="opHref" jdbcType="VARCHAR" />
+    <result column="op_seq" property="opSeq" jdbcType="INTEGER" />
+    <result column="add_time" property="addTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="delete_sign" property="deleteSign" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, op_code, op_name, op_href, op_seq, add_time, update_time, delete_sign
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from AuthOperation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from AuthOperation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.vshell.server.model.AuthOperation" >
+    insert into AuthOperation (id, op_code, op_name, 
+      op_href, op_seq, add_time, 
+      update_time, delete_sign)
+    values (#{id,jdbcType=INTEGER}, #{opCode,jdbcType=VARCHAR}, #{opName,jdbcType=VARCHAR}, 
+      #{opHref,jdbcType=VARCHAR}, #{opSeq,jdbcType=INTEGER}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{deleteSign,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vshell.server.model.AuthOperation" >
+    insert into AuthOperation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="opCode != null" >
+        op_code,
+      </if>
+      <if test="opName != null" >
+        op_name,
+      </if>
+      <if test="opHref != null" >
+        op_href,
+      </if>
+      <if test="opSeq != null" >
+        op_seq,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="deleteSign != null" >
+        delete_sign,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="opCode != null" >
+        #{opCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opName != null" >
+        #{opName,jdbcType=VARCHAR},
+      </if>
+      <if test="opHref != null" >
+        #{opHref,jdbcType=VARCHAR},
+      </if>
+      <if test="opSeq != null" >
+        #{opSeq,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteSign != null" >
+        #{deleteSign,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vshell.server.model.AuthOperation" >
+    update AuthOperation
+    <set >
+      <if test="opCode != null" >
+        op_code = #{opCode,jdbcType=VARCHAR},
+      </if>
+      <if test="opName != null" >
+        op_name = #{opName,jdbcType=VARCHAR},
+      </if>
+      <if test="opHref != null" >
+        op_href = #{opHref,jdbcType=VARCHAR},
+      </if>
+      <if test="opSeq != null" >
+        op_seq = #{opSeq,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteSign != null" >
+        delete_sign = #{deleteSign,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vshell.server.model.AuthOperation" >
+    update AuthOperation
+    set op_code = #{opCode,jdbcType=VARCHAR},
+      op_name = #{opName,jdbcType=VARCHAR},
+      op_href = #{opHref,jdbcType=VARCHAR},
+      op_seq = #{opSeq,jdbcType=INTEGER},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      delete_sign = #{deleteSign,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByConditions" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from AuthOperation
+    where delete_sign = 0
+          <if test="opCode != null" >
+        and op_code like CONCAT('%', #{opCode,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="opName != null" >
+        and op_name like CONCAT('%', #{opName,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="opHref != null" >
+        and op_href like CONCAT('%', #{opHref,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="opSeq != null" >
+        and op_seq = #{opSeq,jdbcType=INTEGER}
+      </if>
+
+    order by id desc
+    <if test="pageSize != null" >
+      limit #{offset, jdbcType=INTEGER}, #{pageSize, jdbcType=INTEGER}
+    </if>
+  </select>
+</mapper>
