@@ -5,3 +5,4 @@
 运行：GeneratorMain
 运行：mvn package
 运行：java -jar 打出来的包
+文档：http://localhost:8081/server/swagger-ui.html
