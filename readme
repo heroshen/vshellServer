@@ -1,1 +1,7 @@
-mybatis-generator:generate -e
+设计：sql
+配置：application.properties
+配置：generatorConfig.xml
+运行：mybatis-generator:generate -e
+运行：GeneratorMain
+运行：mvn package
+运行：java -jar 打出来的包
